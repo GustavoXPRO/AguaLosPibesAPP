@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AguaLosPibesAPP.EntregaPage"
+             Title="Opciones de Entrega"
+             BackgroundColor="#F4F7F6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Banner con el Producto Seleccionado -->
+            <Border BackgroundColor="#E0F2FE" Stroke="#0284C7" StrokeThickness="1" Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Opción Seleccionada:" FontSize="13" TextColor="#0369A1" />
+                    
+                    <!-- Este Label cambiará dinámicamente según lo que eligió el usuario -->
+                    <Label x:Name="lblProducto" FontSize="18" FontAttributes="Bold" TextColor="#0C4A6E" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="¿Cómo deseas recibir tu pedido?"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#1A365D" />
+
+            <!-- Opción 1: Envío a Domicilio -->
+            <Border Stroke="#0284C7" StrokeThickness="2" Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="60, *" ColumnSpacing="10">
+                        <Image Grid.Column="0" Source="delivery.png" HeightRequest="50" WidthRequest="50" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Envío a Domicilio" FontSize="17" FontAttributes="Bold" TextColor="#0284C7" />
+                            <Label Text="Te lo llevamos directamente a tu casa." FontSize="12" TextColor="#666666" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="Ingresa tu dirección:" FontSize="13" FontAttributes="Bold" TextColor="#333333" Margin="0,5,0,0" />
+                    <Entry x:Name="txtDireccion" 
+                           Placeholder="Ej: Av. Principal 1234, Barrio..." 
+                           BackgroundColor="White" 
+                           TextColor="#333333" />
+
+                    <Button Text="Seleccionar Envío" 
+                            BackgroundColor="#0284C7" 
+                            TextColor="White"
+                            Clicked="OnEnvioDomicilioClicked" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Opción 2: Retiro en Local / Domicilio -->
+            <Border Stroke="#16A34A" StrokeThickness="2" Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="60, *" ColumnSpacing="10">
+                        <Image Grid.Column="0" Source="retiro.png" HeightRequest="50" WidthRequest="50" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Retiro en el Local" FontSize="17" FontAttributes="Bold" TextColor="#16A34A" />
+                            <Label Text="Pasas a buscarlo por nuestro domicilio." FontSize="12" TextColor="#666666" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="🧹 Incluye sanitizado y limpieza completa de tu bidon antes de retirarlo." 
+                           FontSize="12" 
+                           FontAttributes="Italic" 
+                           TextColor="#15803D" />
+
+                    <Button Text="Seleccionar Retiro en Local" 
+                            BackgroundColor="#16A34A" 
+                            TextColor="White"
+                            Clicked="OnRetiroLocalClicked" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
