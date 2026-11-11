@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AguaLosPibesAPP.LoginPage"
+             Title="Acceso - Agua Los Pibes"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <!-- Logo o Título -->
+            <Label Text="BIENVENIDO QUERIDO CLIENTE" 
+                   FontSize="26" 
+                   FontAttributes="Italic" 
+                   HorizontalOptions="Center" 
+                   TextColor="#0077B6"/>
+
+            <!-- Logo Principal con el ancho de la pantalla -->
+            <Image Source="logo.png" 
+                   HeightRequest="150" 
+                   HorizontalOptions="Fill" 
+                   Aspect="AspectFit"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="Inicia sesión o regístrate para continuar" 
+                   FontSize="14" 
+                   HorizontalOptions="Center" 
+                   TextColor="Gray"
+                   Margin="0,0,0,20"/>
+
+            <!-- Campos de Texto -->
+            <Entry x:Name="UsernameEntry" 
+                   Placeholder="Usuario o Teléfono" 
+                   ClearButtonVisibility="WhileEditing"/>
+
+            <Entry x:Name="PasswordEntry" 
+                   Placeholder="Contraseña" 
+                   IsPassword="True" 
+                   ClearButtonVisibility="WhileEditing"/>
+
+            <!-- Botones de Acción -->
+            <Button Text="Iniciar Sesión" 
+                    Command="{Binding}"
+                    Clicked="OnLoginClicked"
+                    BackgroundColor="#0077B6"
+                    TextColor="White"
+                    CornerRadius="10"/>
+
+            <Button Text="Registrarse" 
+                    Clicked="OnRegisterClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="#0077B6"
+                    BorderColor="#0077B6"
+                    BorderWidth="1"
+                    CornerRadius="10"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

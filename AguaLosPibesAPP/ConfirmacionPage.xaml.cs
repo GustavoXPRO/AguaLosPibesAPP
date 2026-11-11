@@ -1,6 +1,7 @@
+using System.Text.Json;
+
 namespace AguaLosPibesAPP;
 
-// Capturamos los dos parámetros enviados desde la pantalla anterior
 [QueryProperty(nameof(Producto), "producto")]
 [QueryProperty(nameof(Entrega), "entrega")]
 public partial class ConfirmacionPage : ContentPage
@@ -58,10 +59,41 @@ public partial class ConfirmacionPage : ContentPage
 
     private async void OnConfirmarPedidoClicked(object sender, EventArgs e)
     {
-        // Mostramos un mensaje de éxito simulando que el pedido fue registrado
+        // 1. Guardamos el pedido en el historial local automáticamente
+        try
+        {
+            var nuevoPedido = new PedidoModel
+            {
+                Producto = string.IsNullOrEmpty(_producto) ? "Pedido de Agua Los Pibes" : _producto,
+                Direccion = string.IsNullOrEmpty(_entrega) ? "Formosa Capital" : _entrega,
+                Fecha = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
+                Estado = "Confirmado"
+            };
+
+            string jsonActual = Preferences.Get("HistorialPedidos", string.Empty);
+            List<PedidoModel> listaPedidos;
+
+            if (string.IsNullOrEmpty(jsonActual))
+            {
+                listaPedidos = new List<PedidoModel>();
+            }
+            else
+            {
+                listaPedidos = JsonSerializer.Deserialize<List<PedidoModel>>(jsonActual) ?? new List<PedidoModel>();
+            }
+
+            listaPedidos.Insert(0, nuevoPedido);
+            Preferences.Set("HistorialPedidos", JsonSerializer.Serialize(listaPedidos));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Atención", $"No se pudo registrar en el historial: {ex.Message}", "OK");
+        }
+
+        // 2. Mensaje de éxito que ya tenías
         await this.DisplayAlertAsync("¡Pedido Recibido!", "Tu pedido ha sido registrado con éxito. Muchas gracias.", "Aceptar");
 
-        // Regresamos a la pantalla principal
+        // 3. Regresamos a la pantalla principal
         await Shell.Current.GoToAsync("//InicioPage");
     }
 

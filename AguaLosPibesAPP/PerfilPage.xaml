@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AguaLosPibesAPP.PerfilPage"
+             Title="Mi Perfil"
+             BackgroundColor="#F4F7F6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <!-- Título -->
+            <Label Text="Datos Personales"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#1A365D"
+                   HorizontalOptions="Center" />
+
+            <!-- Foto de Perfil (Con aspecto circular simulado usando Border que reemplaza al Frame obsoleto) -->
+            <Border HeightRequest="130"
+                    WidthRequest="130"
+                    StrokeShape="RoundRectangle 65"
+                    HorizontalOptions="Center"
+                    Padding="0"
+                    StrokeThickness="2"
+                    Stroke="#0077B6"
+                    BackgroundColor="Transparent">
+                <Image x:Name="FotoPerfilImage"
+                       Source="perfil_default.png"
+                       Aspect="AspectFill"
+                       HeightRequest="130"
+                       WidthRequest="130" />
+            </Border>
+
+            <!-- Botones para la Foto (Corregido sin la etiqueta incorrecta) -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="10" HorizontalOptions="Center" WidthRequest="280">
+                <Button Grid.Column="0"
+                        Text="📷 Tomar Foto"
+                        BackgroundColor="#0077B6"
+                        TextColor="White"
+                        FontSize="12"
+                        CornerRadius="8"
+                        Clicked="OnTomarFotoClicked" />
+
+                <Button Grid.Column="1"
+                        Text="🖼️ Galería"
+                        BackgroundColor="#4A5568"
+                        TextColor="White"
+                        FontSize="12"
+                        CornerRadius="8"
+                        Clicked="OnElegirGaleriaClicked" />
+            </Grid>
+
+            <!-- Campos de Datos Personales -->
+            <VerticalStackLayout Spacing="15" Margin="0,10,0,0">
+
+                <Label Text="Nombre completo:" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                <Entry x:Name="NombreEntry" 
+                       Placeholder="Ej: Gustavo Cabrera"
+                       TextColor="#1A365D"
+                       BackgroundColor="White" />
+
+                <Label Text="Número de Teléfono / WhatsApp:" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                <Entry x:Name="TelefonoEntry" 
+                       Placeholder="Ej: 3704123456"
+                       TextColor="#1A365D"
+                       Keyboard="Telephone"
+                       BackgroundColor="White" />
+
+                <Label Text="Dirección de Entrega:" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                <Entry x:Name="DireccionEntry" 
+                       Placeholder="Ej: Av. 25 de Mayo 1234"
+                       TextColor="#1A365D"
+                       BackgroundColor="White" />
+
+            </VerticalStackLayout>
+
+            <!-- Botón Guardar Cambios -->
+            <Button Text="Guardar Datos"
+                    BackgroundColor="#28A745"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    Margin="0,10,0,30"
+                    Clicked="OnGuardarPerfilClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

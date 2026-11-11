@@ -1,17 +1,29 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿namespace AguaLosPibesAPP;
 
-namespace AguaLosPibesAPP
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
 
-        protected override Window CreateWindow(IActivationState? activationState)
+        // Registro de rutas de navegación
+        Routing.RegisterRoute(nameof(ConfirmacionPage), typeof(ConfirmacionPage));
+        Routing.RegisterRoute(nameof(EntregaPage), typeof(EntregaPage));
+        Routing.RegisterRoute(nameof(HistorialPage), typeof(HistorialPage));
+        Routing.RegisterRoute(nameof(PerfilPage), typeof(PerfilPage));
+
+        MainPage = new AppShell();
+    }
+
+    protected override async void OnStart()
+    {
+        base.OnStart();
+
+        bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
+
+        if (isLoggedIn)
         {
-            return new Window(new AppShell());
+            await Shell.Current.GoToAsync("//InicioPage");
         }
     }
 }
