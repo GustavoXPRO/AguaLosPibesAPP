@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AguaLosPibesAPP.HistorialPage"
+             Title="Historial de Compras"
+             BackgroundColor="#F4F7F6">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="HISTORIAL DE COMPRAS" 
+               FontSize="22" 
+               FontAttributes="Italic" 
+               TextColor="#1A365D" 
+               HorizontalOptions="Center"/>
+
+        <!-- Lista de Compras -->
+        <CollectionView x:Name="HistorialCollectionView" Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#0077B6" StrokeThickness="1" BackgroundColor="White" Padding="15" Margin="0,5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="{Binding Producto}" FontSize="16" FontAttributes="Bold" TextColor="#0077B6"/>
+                            <Label Text="{Binding Direccion}" FontSize="13" TextColor="#555555"/>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="{Binding Fecha}" FontSize="11" TextColor="Gray"/>
+                                <Label Text="{Binding Estado}" FontSize="11" TextColor="#28A745" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Mensaje si no hay compras -->
+        <Label x:Name="SinHistorialLabel" 
+               Text="No tenés compras registradas todavía." 
+               FontSize="14" 
+               TextColor="Gray" 
+               HorizontalOptions="Center" 
+               IsVisible="False" 
+               Margin="0,50,0,0"/>
+
+    </VerticalStackLayout>
+</ContentPage>

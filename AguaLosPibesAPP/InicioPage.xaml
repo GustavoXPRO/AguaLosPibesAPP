@@ -16,92 +16,48 @@
                    HorizontalOptions="Center"
                    Margin="0,15,0,0" />
 
-            <!-- Logo Principal debajo de AGUA LOS PIBES -->
+            <!-- Logo Principal -->
             <Image Source="logo.png"
-                   HeightRequest="100"
-                   WidthRequest="100"
+                   HeightRequest="90"
+                   WidthRequest="90"
                    HorizontalOptions="Center"
                    Aspect="AspectFit"
                    Margin="0,-5,0,5" />
 
-            <!-- Subtítulo / Frase de Bienvenida -->
-            <Label Text="¡Hola, bienvenido! Nuestros servicios son:"
+            <!-- Subtítulo -->
+            <Label Text="¡Hola! Seleccioná un servicio:"
                    FontSize="14"
                    TextColor="#555555"
                    HorizontalOptions="Center"
-                   Margin="0,-10,0,10" />
+                   Margin="0,-10,0,5" />
 
             <!-- Opción 1: Recarga de Agua -->
             <Border Stroke="#00A8E8" StrokeThickness="2" Padding="15">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="15" />
                 </Border.StrokeShape>
-
-                <VerticalStackLayout Spacing="15">
-                    <!-- Icono pequeño a la izquierda del Título (Igual a Envío a Domicilio) -->
-                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12" VerticalOptions="Center">
-                        <Image Grid.Column="0" 
-                               Source="recarga.png" 
-                               HeightRequest="40" 
-                               WidthRequest="40" 
-                               Aspect="AspectFit"
-                               VerticalOptions="Center" />
-
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                            <Label Text="Recarga de Agua (20L) - $5.000" 
-                                   FontSize="18" 
-                                   FontAttributes="Bold" 
-                                   TextColor="#00A8E8" />
-                            <Label Text="Solicitud de recarga para tu bidón." 
-                                   FontSize="12" 
-                                   TextColor="#666666" />
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <!-- Botón limpio abajo sin meter la imagen adentro -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Recarga de Agua (20L) - $5.000" FontSize="16" FontAttributes="Bold" TextColor="#00A8E8" />
                     <Button Text="Solicitar Recarga" 
                             BackgroundColor="#00A8E8" 
                             TextColor="White"
-                            FontAttributes="Bold"
-                            HeightRequest="48"
+                            HeightRequest="45"
                             CornerRadius="10"
                             Clicked="OnRecargaClicked" />
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Opción 2: Compra Inicial (Bidón + Carga) -->
+            <!-- Opción 2: Compra Inicial -->
             <Border Stroke="#0077B6" StrokeThickness="2" Padding="15">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="15" />
                 </Border.StrokeShape>
-
-                <VerticalStackLayout Spacing="15">
-                    <!-- Icono pequeño a la izquierda del Título -->
-                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12" VerticalOptions="Center">
-                        <Image Grid.Column="0" 
-                               Source="bidon.png" 
-                               HeightRequest="40" 
-                               WidthRequest="40" 
-                               Aspect="AspectFit"
-                               VerticalOptions="Center" />
-
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                            <Label Text="Kit Envase + Carga (20L) - $20.000" 
-                                   FontSize="18" 
-                                   FontAttributes="Bold" 
-                                   TextColor="#0077B6" />
-                            <Label Text="Si no tenés envase, comprás el kit inicial (no incluye Dispenser)." 
-                                   FontSize="12" 
-                                   TextColor="#666666" />
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <!-- Botón limpio abajo -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Kit Envase + Carga (20L) - $20.000" FontSize="16" FontAttributes="Bold" TextColor="#0077B6" />
                     <Button Text="Comprar Kit Nuevo" 
                             BackgroundColor="#0077B6" 
                             TextColor="White"
-                            FontAttributes="Bold"
-                            HeightRequest="48"
+                            HeightRequest="45"
                             CornerRadius="10"
                             Clicked="OnCompraInicialClicked" />
                 </VerticalStackLayout>
@@ -112,38 +68,61 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="15" />
                 </Border.StrokeShape>
-
-                <VerticalStackLayout Spacing="15">
-                    <!-- Icono pequeño a la izquierda del Título -->
-                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12" VerticalOptions="Center">
-                        <Image Grid.Column="0" 
-                               Source="dispenser.png" 
-                               HeightRequest="40" 
-                               WidthRequest="40" 
-                               Aspect="AspectFit"
-                               VerticalOptions="Center" />
-
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                            <Label Text="Solicitar Dispenser Nuevo - $15.000" 
-                                   FontSize="18" 
-                                   FontAttributes="Bold" 
-                                   TextColor="#023E8A" />
-                            <Label Text="Solicitud de reposición o mantenimiento de dispenser." 
-                                   FontSize="12" 
-                                   TextColor="#666666" />
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <!-- Botón limpio abajo -->
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Solicitar Dispenser - $15.000" FontSize="16" FontAttributes="Bold" TextColor="#023E8A" />
                     <Button Text="Solicitar Dispenser" 
                             BackgroundColor="#023E8A" 
                             TextColor="White"
-                            FontAttributes="Bold"
-                            HeightRequest="48"
+                            HeightRequest="45"
                             CornerRadius="10"
                             Clicked="OnDispenserClicked" />
                 </VerticalStackLayout>
             </Border>
+
+            <!-- SECCIÓN NUEVA: BARRA DE BOTONES ABAJO DE LOS SERVICIOS -->
+            <BoxView HeightRequest="1" BackgroundColor="#CCCCCC" Margin="0,10,0,10" />
+
+            <Label Text="Menú de Navegación" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   TextColor="#1A365D" 
+                   HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="10" RowDefinitions="Auto, Auto" RowSpacing="10">
+
+                <!-- Botón Perfil -->
+                <Button Grid.Row="0" Grid.Column="0"
+                        Text="👤 Mi Perfil" 
+                        BackgroundColor="#4A5568" 
+                        TextColor="White" 
+                        CornerRadius="8"
+                        Clicked="OnPerfilClicked" />
+
+                <!-- Botón Historial -->
+                <Button Grid.Row="0" Grid.Column="1"
+                        Text="📋 Historial" 
+                        BackgroundColor="#4A5568" 
+                        TextColor="White" 
+                        CornerRadius="8"
+                        Clicked="OnHistorialClicked" />
+
+                <!-- Botón WhatsApp -->
+                <Button Grid.Row="1" Grid.Column="0"
+                        Text="💬 Soporte WA" 
+                        BackgroundColor="#25D366" 
+                        TextColor="White" 
+                        CornerRadius="8"
+                        Clicked="OnAyudaWhatsAppClicked" />
+
+                <!-- Botón Cerrar Sesión -->
+                <Button Grid.Row="1" Grid.Column="1"
+                        Text="🚪 Salir" 
+                        BackgroundColor="#D90429" 
+                        TextColor="White" 
+                        CornerRadius="8"
+                        Clicked="OnCerrarSesionClicked" />
+
+            </Grid>
 
         </VerticalStackLayout>
     </ScrollView>
